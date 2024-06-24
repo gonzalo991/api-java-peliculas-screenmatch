@@ -1,5 +1,6 @@
 package com.alura.screenmatch.modelos;
 
+import com.alura.screenmatch.excepcion.ErrorEnConversionDeDuracionException;
 import com.google.gson.annotations.SerializedName;
 
 public class Titulo implements Comparable<Titulo> {
@@ -20,7 +21,11 @@ public class Titulo implements Comparable<Titulo> {
     public Titulo(TituloOmdb miTituloOmdb) {
         this.nombre = miTituloOmdb.title();
         this.fechaDeLanzamiento = Integer.valueOf(miTituloOmdb.year());
-        this.duracionEnMinutos = Integer.valueOf(miTituloOmdb.runtime().substring(0,2));
+        if(miTituloOmdb.runtime().contains("N/A")){
+            throw new ErrorEnConversionDeDuracionException("No se pudo convertir la duración," +
+                    "porque contiene un N/A");
+        }
+        this.duracionEnMinutos = Integer.valueOf(miTituloOmdb.runtime().substring(0,3).replace(" ",""));
     }
 
     public String getNombre() {
@@ -60,8 +65,8 @@ public class Titulo implements Comparable<Titulo> {
     }
 
     public void muestraFichaTecnica() {
-        System.out.println("Nombre de la película: " + nombre);
-        System.out.println("Año de lanzamiento: " + fechaDeLanzamiento);
+        System.out.println("[ Nombre de la película: " + nombre);
+        System.out.println("Año de lanzamiento: " + fechaDeLanzamiento+" ]");
     }
 
     public void evalua(double nota) {
@@ -81,8 +86,8 @@ public class Titulo implements Comparable<Titulo> {
     @Override
     public String toString() {
         return
-                "nombre = '" + nombre + '\'' +
-                ", fechaDeLanzamiento = " + fechaDeLanzamiento + "\"" +
-                ", duración = "+ duracionEnMinutos;
+                "[ Nombre = '" + nombre + '\'' +
+                ", Fecha De Lanzamiento = " + fechaDeLanzamiento + "\"" +
+                ", Duración = "+ duracionEnMinutos+ " ] ";
     }
 }

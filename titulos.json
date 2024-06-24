@@ -1,0 +1,26 @@
+[
+  {
+    "Title": "Matrix",
+    "Year": 1993,
+    "IncluidoEnElPlan": false,
+    "SumaDeLasEvaluaciones": 0.0,
+    "TotalDeEvaluaciones": 0,
+    "DuracionEnMinutos": 60
+  },
+  {
+    "Title": "Encanto",
+    "Year": 2021,
+    "IncluidoEnElPlan": false,
+    "SumaDeLasEvaluaciones": 0.0,
+    "TotalDeEvaluaciones": 0,
+    "DuracionEnMinutos": 102
+  },
+  {
+    "Title": "Top Gun",
+    "Year": 1986,
+    "IncluidoEnElPlan": false,
+    "SumaDeLasEvaluaciones": 0.0,
+    "TotalDeEvaluaciones": 0,
+    "DuracionEnMinutos": 109
+  }
+]
